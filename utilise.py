@@ -33,4 +33,23 @@ def getContoutours(img,cThr=[100,100],showCanny= False,minArea=1000,filter=0,dra
 
     return img, finalCountours
 
+def reorder(myPoints):
+    print(myPoints.shape)
+    myPointsNew = np.zeros_like(myPoints)
+    myPoints = myPoints.reshape((4,2))
+    add = myPoints.sum(1)
+    myPointsNew[0] = myPoints[np.argmin(add)]
+    myPointsNew[3] = myPoints[np.argmax(add)]
+    diff = np.diff(myPoints,axis=1)
+    myPointsNew[1] = myPoints[np.argmin(diff)]
+    myPointsNew[2] = myPoints[np.argmax(diff)]
+    return myPointsNew
+
+def warpImg(img, points, w, h):
+    print(points)
+    print(reorder(points))
+
+
+
+
 
