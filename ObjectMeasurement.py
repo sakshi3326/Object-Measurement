@@ -12,7 +12,7 @@ while True:
     if webcam:success, img = cap.read()
     else: img = cv2.imread(path)
 
-    utilise.getContoutrs(img,showCanny=True)
+    img, finalCountours = utilise.getContoutours(img,showCanny=True,draw=True)
 
     img = cv2.resize(img,(0,0),None,0.5,0.5)
 
