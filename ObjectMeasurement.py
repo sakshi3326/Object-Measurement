@@ -1,4 +1,5 @@
 import cv2
+import utilise
 import numpy as np
 webcam = False
 path = '1.jpeg'
@@ -11,8 +12,9 @@ while True:
     if webcam:success, img = cap.read()
     else: img = cv2.imread(path)
 
+    utilise.getContoutrs(img,showCanny=True)
 
-
+    img = cv2.resize(img,(0,0),None,0.5,0.5)
 
     cv2.imshow('original', img)
     cv2.waitKey(1)
