@@ -23,7 +23,14 @@ while True:
         imgWarp = utilise.warpImg(img, biggest, wP, hP)
 
 
-        img2, findCountours2 = utilise.getContoutours(imgWarp, minArea=2000, filter=4,cThr=[50,50],draw=True)
+        img2, findCountours2 = utilise.getContoutours(imgWarp, minArea=2000, filter=4,cThr=[50,50],draw=False)
+
+        if len(findCountours2)!=0:
+            for obj in findCountours2:
+                cv2.polylines(img2,[obj[2]],True,(0,255,0),2)
+                nPoints = utilise.reorder(obj[2])
+                print(utilise.finddis(nPoints[0][0]//scale,nPoints[1][0]//scale))
+
         cv2.imshow('A4',img2 )
 
     img = cv2.resize(img,(0,0),None,0.5,0.5)
