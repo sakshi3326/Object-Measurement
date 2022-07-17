@@ -29,7 +29,7 @@ while True:
             for obj in findCountours2:
                 cv2.polylines(img2,[obj[2]],True,(0,255,0),2)
                 nPoints = utilise.reorder(obj[2])
-                print(utilise.finddis(nPoints[0][0]//scale,nPoints[1][0]//scale))
+                print(round(utilise.finddis(nPoints[0][0]//scale,nPoints[1][0]//scale)/10),1)
 
         cv2.imshow('A4',img2 )
 
